@@ -52,10 +52,10 @@ char *copy_string(char *to, const char *from)
 
 unsigned int string_len(char *entry)
 {
-	unsigned int len = 0;
+	unsigned int lenght = 0;
 
-	while (entry[len] != '\0') /* while not null */
+	while (entry[lenght] != '\0') /* while not null */
 		lenght++;
 
-	return (len);
+	return (lenght);
 }

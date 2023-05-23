@@ -34,6 +34,25 @@ char *new_getenv(char *varname)
 
 		a++;
 	}
-	z = (value + mov_to);
+	z = (value + destindex);
 	return (z);
 }
+
+/**
+ * env_printing - prints the environment var
+ *
+ * Return: void
+ */
+
+void env_printing(void)
+{
+	char **s;
+	size_t lenght;
+
+	for (s = environ; *s != NULL; s++)
+	{
+		lenght = string_len(*s);
+		write(STDOUT_FILENO, *s, lenght);
+		write(STDOUT_FILENO, "\n", 1);
+	}
+}	

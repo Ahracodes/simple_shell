@@ -5,10 +5,7 @@
  * Return: void
  */
 
-
-
-
-void endoffile(char *data)
+void end_of_file(char *data)
 {
 	if(data != NULL)
 	{
@@ -23,17 +20,18 @@ void endoffile(char *data)
 
 /* whitespace_handler 
 @c: string
-Return: O or 1*/
-int whitespace(char *c)
+Return: O or 1 */
 
+int handle_whitespace(char *entry)
+{
 	int x;
 	char y;
 
-	for (x = 0; c[x] != '\0'; x++)
-{
-	y = c[x];
-	if (!isspace(y))
-		return (0);
-}
-return (1)
+	for (x = 0; entry[x] != '\0'; x++)
+	{	
+		y = entry[x];
+		if (!isspace(y))
+			return (0);
 	}
+	return (1);
+}

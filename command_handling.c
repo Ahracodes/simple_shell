@@ -19,7 +19,7 @@ int executer(char **tkn, char *prog, char *path)
 
 	child_pid = fork();
 
-	if (pid == 0)
+	if (child_pid == 0)
 	{
 		if (execve(path, tkn, environ) == -1)
 		{
@@ -33,8 +33,8 @@ int executer(char **tkn, char *prog, char *path)
 		exit(1);
 	}
 	else
-		wait(&exit_status);
-	return (exit_status);
+		wait(&exit_stat);
+	return (exit_stat);
 }
 
 
@@ -48,35 +48,45 @@ int executer(char **tkn, char *prog, char *path)
  * Return: NULL
  */
 
-char *command_finder(char *cmmd, char *path)
+char *command_finder(char *cmmd,char *full_path, char *path)
 {
 	unsigned int lenght_of_cmmd, lenght_of_path;
-	char *tkn, *full_path;
+	char *tkn, *copy_of_path;
 	int X;
 
-	full_path = NULL;
 	lenght_of_cmmd = string_len(cmmd);
-	tkn = strtok(path, ":");
+	copy_of_path = malloc(sizeof(char) * (string_len(path) + 1));
+	if (copy_of_path == NULL)
+		return (NULL);
+	copy_string(full_path, path);
+	tkn = strtok(copy_of_path, ":");
 
-	while (token != NULL)
+	while (tkn != NULL)
 	{
 		lenght_of_path = string_len(tkn);
 		X = lenght_of_path + lenght_of_cmmd + 2;
 		full_path = malloc(sizeof(char) * (X));
 
 		if (full_path == NULL)
+		{
+			free(copy_of_path);
 			return (NULL);
+		}
 
 		copy_string(full_path, tkn);
 		full_path[lenght_of_path] = '/';
 		copy_string(full_path + lenght_of_path + 1, cmmd);
 		full_path[lenght_of_path + lenght_of_cmmd + 1] = '\0';
 
-		if (access(full_path, X_OK) == 0)
+		if (access(full_path, X_OK) != 0)
+		{
+			free(full_path);
+			full_path = NULL;
+			tkn = strtok(NULL, ":");
+		}
+		else
 			break;
-		free(full_path);
-		full_path = NULL;
-		tkn = strtok(NULL, ":");
 	}
-	return (full_path);
+	free(copy_of_path);
+	return full_path;
 }
