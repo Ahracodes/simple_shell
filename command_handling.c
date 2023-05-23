@@ -52,6 +52,7 @@ char *command_finder(char *cmmd, char *path)
 {
 	unsigned int lenght_of_cmmd, lenght_of_path;
 	char *tkn, *full_path;
+	int X;
 
 	full_path = NULL;
 	lenght_of_cmmd = string_len(cmmd);

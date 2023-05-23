@@ -1,3 +1,39 @@
 #include "main.h"
 
-/* This has the env functions ( env_printing new_getenv and compare_env )
+/* add env_printing:wq */
+
+/**
+ * new_getenv - retrieves environment variable
+ *
+ * @varname: of variable
+ *
+ * Return: pointer to environ variable
+ */
+
+char *new_getenv(char *varname)
+{
+	char *value = NULL;
+	int a = 0, b = 0, destindex = 0;
+	char *z;
+
+	while (environ[a] != NULL)
+	{
+		while (environ[a][b] != '=')
+		{
+			if (environ[a][b] != varname[b])
+				break;
+			b++;
+		}
+
+		if (environ[a][b] == '=' && varname[b] == '\0')
+		{
+			value = environ[a];
+			destindex = b + 1;
+			break;
+		}
+
+		a++;
+	}
+	z = (value + mov_to);
+	return (z);
+}
