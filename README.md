@@ -1,5 +1,1 @@
-This Project Named 0x16 simple shell was done by Authors:
-
-
-FATIMA EZZAHRAE NADIFI:
-FATIMA ZOHRA KJAJA:CONTACT.KJAJA@GMAIL.COM
+This is the simple shell project, under the curriculum of ALX SE course.
