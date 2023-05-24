@@ -70,21 +70,18 @@ int main(int argc, char *av[])
 		if (handle_whitespace(strg) == 1)
 			continue;
 		tkns = tokenizer(strg);
-<<<<<<< HEAD
 
-=======
->>>>>>> 81b3243bef7463af79f7cb7737dec5cb37d0146d
 		if (compare_strings(tkns[0], "env") == 0)
 		{	free(tkns);
 			env_printing();
 			continue; }
 		if (compare_strings(tkns[0], "exit") == 0)
-<<<<<<< HEAD
+
 			exiting(strg, tkns, stat);
 
-=======
+
 			exiting(strg, tkns, stat);
->>>>>>> 81b3243bef7463af79f7cb7737dec5cb37d0146d
+
 		env_of_path = new_getenv("PATH");
 		path = command_finder(tkns[0], path, env_of_path);
 		if (path == NULL)
