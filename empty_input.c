@@ -1,16 +1,10 @@
 #include "main.h"
 
 /**
-<<<<<<< HEAD
- * end_of_file - data is end_of_file
- * condition ctrl+D
- * @data: string
-=======
  * end_of_file - handle ctrl d (EOF)
  *
  * @data: entry string
  *
->>>>>>> 81b3243bef7463af79f7cb7737dec5cb37d0146d
  * Return: void
  */
 
@@ -28,20 +22,12 @@ void end_of_file(char *data)
 
 
 /**
-<<<<<<< HEAD
- * handle_whitespace - check if there's space
- * @c: string
- * Return: 0 or 1
-*/
-=======
  * handle_whitespace - check if there's only space
  *
  * @entry: string
  *
  * Return: O or 1
  */
->>>>>>> 81b3243bef7463af79f7cb7737dec5cb37d0146d
-
 int handle_whitespace(char *entry)
 {
 	int x;

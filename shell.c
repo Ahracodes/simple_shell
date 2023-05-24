@@ -76,12 +76,7 @@ int main(int argc, char *av[])
 			env_printing();
 			continue; }
 		if (compare_strings(tkns[0], "exit") == 0)
-
 			exiting(strg, tkns, stat);
-
-
-			exiting(strg, tkns, stat);
-
 		env_of_path = new_getenv("PATH");
 		path = command_finder(tkns[0], path, env_of_path);
 		if (path == NULL)
