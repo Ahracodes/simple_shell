@@ -1,13 +1,14 @@
 #include "main.h"
 
-/** endoffile_handler - buffer is endoffile
+/** endoffile_handler - handle the end of file condition
+ * condition ctrl+D
  * @data: string
  * Return: void
  */
 
 void end_of_file(char *data)
 {
-	if(data != NULL)
+	if (data != NULL)
 	{
 		free(data);
 		data = NULL;
@@ -18,7 +19,7 @@ void end_of_file(char *data)
 }
 
 
-/* whitespace_handler 
+/** whitespace_handler - check if there's only space 
 @c: string
 Return: O or 1 */
 
@@ -28,7 +29,7 @@ int handle_whitespace(char *entry)
 	char y;
 
 	for (x = 0; entry[x] != '\0'; x++)
-	{	
+	{
 		y = entry[x];
 		if (!isspace(y))
 			return (0);
