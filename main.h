@@ -12,7 +12,7 @@
 /* prototypes */
 char *new_getenv(char *varname);
 void env_printing(void);
-char *command_finder(char *cmmd,char *full_path, char *path);
+char *command_finder(char *cmmd, char *full_path, char *path);
 int executer(char **tkn, char *prog, char *path);
 char *copy_string(char *to, const char *from);
 unsigned int string_len(char *entry);
