@@ -78,7 +78,7 @@ char *command_finder(char *cmmd, char *full_path, char *path)
 		copy_string(full_path + lenght_of_path + 1, cmmd); /* append cmmd to fp */
 		full_path[lenght_of_path + lenght_of_cmmd + 1] = '\0'; /* add \0 to fp */
 
-		if (access(full_path, X_OK) != 0) /* check if executable */
+		if (access(full_path, X_OK) != 0) /* access and executable check */
 		{
 			free(full_path);
 			full_path = NULL;
