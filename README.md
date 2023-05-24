@@ -7,6 +7,6 @@ $ ./hsh ($) /bin/ls hsh main.c shell.c($)($) exit$
 Cd
 change the directory
 Env
-print out the current environment
+print out the current environmet
 
 
