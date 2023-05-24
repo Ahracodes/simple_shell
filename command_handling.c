@@ -56,9 +56,7 @@ char *command_finder(char *cmmd,char *full_path, char *path)
 
 	lenght_of_cmmd = string_len(cmmd);
 	copy_of_path = malloc(sizeof(char) * (string_len(path) + 1));
-	if (copy_of_path == NULL)
-		return (NULL);
-	copy_string(full_path, path);
+	copy_string(copy_of_path, path);
 	tkn = strtok(copy_of_path, ":");
 
 	while (tkn != NULL)
@@ -88,5 +86,5 @@ char *command_finder(char *cmmd,char *full_path, char *path)
 			break;
 	}
 	free(copy_of_path);
-	return full_path;
+	return (full_path);
 }
