@@ -74,7 +74,7 @@ int main(int argc, char *av[])
 		if (handle_whitespace(strg) == 1)
 			continue;
 		tkns = tokenizer(strg);
-		
+
 		if (compare_strings(tkns[0], "env") == 0)
 		{
 			free(tkns);
@@ -82,7 +82,7 @@ int main(int argc, char *av[])
 			continue;
 		}
 		if (compare_strings(tkns[0], "exit") == 0)
-			exiting(strg, tkns, stat);
+			exiting(strg, tkns, 1);
 
 		env_of_path = new_getenv("PATH");
 		path = command_finder(tkns[0], path, env_of_path);
