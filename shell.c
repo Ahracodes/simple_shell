@@ -80,7 +80,7 @@ int main(int argc, char *av[])
 			continue; }
 		if (compare_strings(tkns[0], "exit") == 0)
 <<<<<<< HEAD
-			exiting(strg, tkns, 1);
+			exiting(strg, tkns, stat);
 
 =======
 			exiting(strg, tkns, stat);
