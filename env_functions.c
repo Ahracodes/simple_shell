@@ -16,16 +16,16 @@ char *new_getenv(char *varname)
 	int a = 0, b = 0, destindex = 0;
 	char *z;
 
-	while (environ[a] != NULL)
+	while (environ[a] != NULL) /* iterates through every env variable */
 	{
 		while (environ[a][b] != '=')
 		{
-			if (environ[a][b] != varname[b])
+			if (environ[a][b] != varname[b]) /* if mismatch */
 				break;
 			b++;
 		}
 
-		if (environ[a][b] == '=' && varname[b] == '\0')
+		if (environ[a][b] == '=' && varname[b] == '\0') /* if match found */
 		{
 			value = environ[a];
 			destindex = b + 1;
@@ -34,7 +34,7 @@ char *new_getenv(char *varname)
 
 		a++;
 	}
-	z = (value + destindex);
+	z = (value + destindex); /* calculate value */
 	return (z);
 }
 
@@ -52,7 +52,7 @@ void env_printing(void)
 	for (s = environ; *s != NULL; s++)
 	{
 		lenght = string_len(*s);
-		write(STDOUT_FILENO, *s, lenght);
-		write(STDOUT_FILENO, "\n", 1);
+		write(STDOUT_FILENO, *s, lenght); /* write env string */
+		write(STDOUT_FILENO, "\n", 1); /* newline to separate variables */
 	}
-}	
+}
