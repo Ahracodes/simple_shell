@@ -14,7 +14,7 @@ char **tokenizer(char *str)
 	int x;
 
 	x = 0;
-	tkns= (char **)malloc(sizeof(char *) * (MAX_SIZE + 1));
+	tkns = (char **)malloc(sizeof(char *) * (MAX_SIZE + 1));
 
 	if (tkns == NULL)
 		exit(1);

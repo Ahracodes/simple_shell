@@ -1,6 +1,7 @@
 #include "main.h"
 
-/** endoffile_handler - handle the end of file condition
+/**
+ * end_of_file - data is end_of_file
  * condition ctrl+D
  * @data: string
  * Return: void
@@ -19,9 +20,11 @@ void end_of_file(char *data)
 }
 
 
-/** whitespace_handler - check if there's only space 
-@c: string
-Return: O or 1 */
+/**
+ * handle_whitespace - check if there's space
+ * @c: string
+ * Return: 0 or 1
+*/
 
 int handle_whitespace(char *entry)
 {

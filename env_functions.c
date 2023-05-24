@@ -55,4 +55,4 @@ void env_printing(void)
 		write(STDOUT_FILENO, *s, lenght);
 		write(STDOUT_FILENO, "\n", 1);
 	}
-}	
+}
