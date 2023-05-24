@@ -50,7 +50,7 @@ int main(int argc, char *av[])
 {	char *strg = NULL, *env_of_path, *path, **tkns;
 	int stat = 0, fl = 0, lenght = 0;
 	size_t strg_s = 0;
-	(void) argc;
+	(void) argc; /* unused variable, to avoid error flag */
 
 	while (1)
 	{
@@ -60,16 +60,16 @@ int main(int argc, char *av[])
 		if (lenght == EOF)
 			end_of_file(strg);
 		if (lenght == -1)
-		{	clear_storage(strg, NULL, NULL);
+		{	clear_storage(strg, NULL, NULL); /* cleanup if getline fail */
 			exit(0); }
 		if (*strg == '\n')
 		{	clear_storage(strg, NULL, NULL);
 			continue; }
 		strg[lenght - 1] = '\0';
 
-		if (handle_whitespace(strg) == 1)
+		if (handle_whitespace(strg) == 1) /* skip if whitesp */
 			continue;
-		tkns = tokenizer(strg);
+		tkns = tokenizer(strg); /* tokenize entry string */
 
 		if (compare_strings(tkns[0], "env") == 0)
 		{	free(tkns);
@@ -78,13 +78,13 @@ int main(int argc, char *av[])
 		if (compare_strings(tkns[0], "exit") == 0)
 			exiting(strg, tkns, stat);
 		env_of_path = new_getenv("PATH");
-		path = command_finder(tkns[0], path, env_of_path);
+		path = command_finder(tkns[0], path, env_of_path); /* find path */
 		if (path == NULL)
 			path = tkns[0];
 		else
 			fl = 1;
 		stat = executer(tkns, av[0], path);
-		clear_storage(strg, tkns, (fl == 1) ? path : NULL);
+		clear_storage(strg, tkns, (fl == 1) ? path : NULL); /* cleanup */
 		strg = NULL;
 		strg_s = 0; }
 	return (0); }
