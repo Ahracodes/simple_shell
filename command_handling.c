@@ -15,25 +15,25 @@
 int executer(char **tkn, char *prog, char *path)
 {
 	pid_t child_pid;
-	int exit_stat;
+	int exit_stat; /*exit status for program */
 
-	child_pid = fork();
+	child_pid = fork(); /* create child process */
 
 	if (child_pid == 0)
 	{
-		if (execve(path, tkn, environ) == -1)
+		if (execve(path, tkn, environ) == -1) /* indicates error */
 		{
 			perror(prog);
 			exit(2);
 		}
 	}
-	else if (child_pid < 0)
+	else if (child_pid < 0) /* forking failed */
 	{
 		perror(prog);
 		exit(1);
 	}
-	else
-		wait(&exit_stat);
+	else /* code executed */
+		wait(&exit_stat); /* wait for end of processing */
 	return (exit_stat);
 }
 
@@ -42,6 +42,8 @@ int executer(char **tkn, char *prog, char *path)
  * command_finder - searches for the command in PATH environ
  *
  * @cmmd: command name
+ *
+ * @full_path: full path string
  *
  * @path: the search path
  *
@@ -57,26 +59,26 @@ char *command_finder(char *cmmd, char *full_path, char *path)
 	lenght_of_cmmd = string_len(cmmd);
 	copy_of_path = malloc(sizeof(char) * (string_len(path) + 1));
 	copy_string(copy_of_path, path);
-	tkn = strtok(copy_of_path, ":");
+	tkn = strtok(copy_of_path, ":"); /* tokenize with : as delimiter */
 
-	while (tkn != NULL)
+	while (tkn != NULL) /* iterate through all tokens */
 	{
 		lenght_of_path = string_len(tkn);
 		X = lenght_of_path + lenght_of_cmmd + 2;
 		full_path = malloc(sizeof(char) * (X));
 
-		if (full_path == NULL)
+		if (full_path == NULL) /* mem alloc fail */
 		{
 			free(copy_of_path);
 			return (NULL);
 		}
 
 		copy_string(full_path, tkn);
-		full_path[lenght_of_path] = '/';
-		copy_string(full_path + lenght_of_path + 1, cmmd);
-		full_path[lenght_of_path + lenght_of_cmmd + 1] = '\0';
+		full_path[lenght_of_path] = '/'; /* append / to fp */
+		copy_string(full_path + lenght_of_path + 1, cmmd); /* append cmmd to fp */
+		full_path[lenght_of_path + lenght_of_cmmd + 1] = '\0'; /* add \0 to fp */
 
-		if (access(full_path, X_OK) != 0)
+		if (access(full_path, X_OK) != 0) /* check if executable */
 		{
 			free(full_path);
 			full_path = NULL;
