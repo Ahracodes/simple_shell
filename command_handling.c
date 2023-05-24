@@ -5,7 +5,7 @@
  *
  * @tkn: array for tokens of the commands and its arguments
  *
- * @prog: the program name
+ * @prog: program's name
  *
  * @path: path of the executable file handled
  *
@@ -48,7 +48,7 @@ int executer(char **tkn, char *prog, char *path)
  * Return: NULL
  */
 
-char *command_finder(char *cmmd,char *full_path, char *path)
+char *command_finder(char *cmmd, char *full_path, char *path)
 {
 	unsigned int lenght_of_cmmd, lenght_of_path;
 	char *tkn, *copy_of_path;
@@ -88,5 +88,5 @@ char *command_finder(char *cmmd,char *full_path, char *path)
 			break;
 	}
 	free(copy_of_path);
-	return full_path;
+	return (full_path);
 }
